@@ -1,0 +1,119 @@
+# java..
+package shapes;
+
+public class Shapes {
+    public static void main(String[] args) {
+        Circle circle = new Circle("Red", true, 5.0);
+        System.out.print(circle.printDetails());
+        
+        Rectangle rectangle = new Rectangle("Blue", false, 4.0, 6.0);
+        System.out.print(rectangle.printDetails());
+        
+        Square square = new Square("Green", true, 3.0);
+        System.out.print(square.printDetails());
+    }
+}
+
+class Shape {
+    private final String color;
+    private final boolean isFilled;
+
+    public Shape(String color, boolean isFilled) {
+        this.color = color;
+        this.isFilled = isFilled;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public boolean isFilled() {
+        return isFilled;
+    }
+
+    public double getArea() {
+        return 0.0; // Base class, no specific area calculation
+    }
+
+    public double getPerimeter() {
+        return 0.0; // Base class, no specific perimeter calculation
+    }
+
+    public double printDetails() {
+        System.out.println("Color: " + color);
+        System.out.println("Is Filled: " + isFilled);
+        return 0;
+    }
+    
+}
+
+class Circle extends Shape {
+    private final double radius;
+
+    public Circle(String color, boolean isFilled, double radius) {
+        super(color, isFilled);
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public double printDetails() {
+        super.printDetails();
+        System.out.println("Shape: Circle");
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    private final double width;
+    private final double length;
+
+    public Rectangle(String color, boolean isFilled, double width, double length) {
+        super(color, isFilled);
+        this.width = width;
+        this.length = length;
+    }
+
+    @Override
+    public double getArea() {
+        return width * length;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * (width + length);
+    }
+
+    @Override
+    public double printDetails() {
+        super.printDetails();
+        System.out.println("Shape: Rectangle");
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+        return 0;
+    }
+}
+
+class Square extends Rectangle {
+    public Square(String color, boolean isFilled, double side) {
+        super(color, isFilled, side, side);
+    }
+
+    @Override
+    public double printDetails() {
+        super.printDetails();
+        System.out.println("Shape: Square");
+        return 0;
+    }
+}
