@@ -1,0 +1,137 @@
+# java..
+//program 1
+package timeconverter;
+import java.util.Scanner;
+public class Timeconverter {
+
+    public static int hoursToMinutes(int hours) {
+        return hours * 60;
+    }
+    
+    public static int hoursToSeconds(int hours) {
+        return hours * 3600;
+    }
+    
+    public static int minutesToHours(int minutes) {
+        return minutes / 60;
+    }
+    
+    public static int secondsToHours(int seconds) {
+        return seconds / 3600;
+    }
+
+
+
+    public static void main(String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter the number of hours: ");
+            int hours = scanner.nextInt();
+            
+            int minutes = hoursToMinutes(hours);
+            int seconds = hoursToSeconds(hours);
+            
+            System.out.println(hours + " hours is equal to " + minutes + " minutes.");
+            System.out.println(hours + " hours is equal to " + seconds + " seconds.");
+            
+            System.out.print("Enter the number of minutes: ");
+            int convertedMinutes = scanner.nextInt();
+            int convertedHours = minutesToHours(convertedMinutes);
+            
+            System.out.println(convertedMinutes + " minutes is equal to " + convertedHours + " hours.");
+            
+            System.out.print("Enter the number of seconds: ");
+            int convertedSeconds = scanner.nextInt();
+            int convertedHours2 = secondsToHours(convertedSeconds);
+            
+            System.out.println(convertedSeconds + " seconds is equal to " + convertedHours2 + " hours.");
+        }
+    }
+
+}
+
+//program 2
+//mathematics
+package pack1;
+
+public class MathOperations {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+package pack2;
+
+public class StringOperations {
+    public String concatenate(String str1, String str2) {
+        return str1 + str2;
+    }
+
+    public String reverse(String str) {
+        StringBuilder reversed = new StringBuilder(str);
+        return reversed.reverse().toString();
+    }
+}
+package pack3;
+
+public class Calculator {
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public String divide(int a, int b) {
+        if (b == 0) {
+            return "Cannot divide by zero.";
+        }
+        return String.valueOf((double) a / b);
+    }
+}
+package mathematics;
+import pack1.MathOperations;
+import pack2.StringOperations;
+import pack3.Calculator;
+public class Main {
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+        StringOperations stringOps = new StringOperations();
+        Calculator calculator = new Calculator();
+
+        int result1 = math.add(10, 5);
+        int result2 = math.subtract(10, 5);
+        String result3 = stringOps.concatenate("Hello, ", "World!");
+        String result4 = stringOps.reverse("OpenAI");
+        int result5 = calculator.multiply(6, 7);
+        String result6 = calculator.divide(10, 2);
+        String result7 = calculator.divide(5, 0);
+
+        System.out.println("Result of addition: " + result1);
+        System.out.println("Result of subtraction: " + result2);
+        System.out.println("Concatenated string: " + result3);
+        System.out.println("Reversed string: " + result4);
+        System.out.println("Result of multiplication: " + result5);
+        System.out.println("Result of division (10 / 2): " + result6);
+        System.out.println("Result of division (5 / 0): " + result7);
+    }
+}
+
+//property
+package javaapplication;
+class ParentClass {
+    protected String protectedProperty = "This is a protected property";
+    String defaultProperty = "This is a default property";
+}
+class ChildClass extends ParentClass {
+    public void accessProperties() {
+        System.out.println(protectedProperty);
+        System.out.println(defaultProperty);
+       
+    }
+}
+public class javaapplication2{
+    public static void main(String[] args) {
+        ChildClass child = new ChildClass();
+        child.accessProperties();
+    }
+}
